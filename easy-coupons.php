@@ -1,6 +1,7 @@
 <?php
 /**
- * @package Easy_Coupons
+ * Package WordPRess
+ * @subpackage Easy_Coupons
  * @version 0.1
  */
 /*
@@ -20,63 +21,70 @@ License: WTFPL :p
 defined('ABSPATH') or die("Cannot access pages directly.");
 
 /**
- * The DB table
+ * Create post type on WP to the coupons
+ *
+ * @uses Category
+ * @uses Tag
  */
-define ('ECC_TABLENAME', 'ecc_coupons');
-
-/**
- * Install
- */
-register_activation_hook(__FILE__, 'ecc_install');
-function ecc_install ()
+add_action('init', 'create_coupons_type');
+function create_coupons_type ()
 {
+	register_post_type('ecc_coupon',
+		array(
+			'labels' => array(
+				'name' => 'Coupons',
+				'singular_name' => 'Coupon'
+			),
+			'public' => true,
+			'has_archive' => true,
+			'rewrite' => array('slug' => 'coupon'),
+			'show_in_admin_bar' => true,
+			'taxonomies' => array('category', 'post_tag'),
+			'supports' => array(
+				'title',
+				'editor',
+				'thumbnail',
+				'excerpt',
+				'revisions'
+			)
+		)
+	);
+}
 
-	global $wpdb;
-	global $tws_db_version;
-
-
-	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-
-
-	/**
-	 * Metadata of table
-	 */
-	$tws_db_version = 1;
-	$table_name = $wpdb->prefix . ECC_TABLENAME;
-
-
-	/**
-	 * Get current db version
-	 */
-	$current_db = (float) get_option('_ecc_db_version');
-	var_dump($current_db);
-	die($current_db);
-
-
-	/**
-	 * If installed is not the actual version lets check for upgrades
-	 */
-	if ($current_db <= $tws_db_version)
+add_filter('pre_get_posts', 'include_coupons_in_categories_and_tags');
+function include_coupons_in_categories_and_tags ($query)
+{
+	if (is_category() || is_tag())
 	{
-		// Here will be the upgrades
-	}
-
-
-	/**
-	 * The dable doesn't exists, lets create it
-	 */
-	if ( ! (bool) $current_db)
-	{
+		$post_type = get_query_var('post_type');
 		
-		dbDelta("CREATE TABLE " . $table_name . " (
-			`id_coupon` varchar(25) collate utf8_unicode_ci NOT NULL,
-			`data` text collate utf8_unicode_ci NOT NULL,
-			`text` varchar(140) collate utf8_unicode_ci NOT NULL,
-			`search_query` text collate utf8_unicode_ci,
-			`from_user` varchar(29) collate utf8_unicode_ci default NULL,
-			`is_fav` tinyint(1) unsigned DEFAULT '0',
-			`date_add` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
-		) comment = 'Twitter Feed cache data';");
-		add_option('_ecc_db_version', $tws_db_version);
+		if ($post_type)
+			$post_type = $post_type;
+	
+		else
+			$post_type = array('post','ecc_coupon');
+	
+		$query->set('post_type',$post_type);
+		return $query;
 	}
 }
+
+/**
+ * Add the sidebar areas
+ */
+register_sidebar(array(
+	'name'=> 'Coupons top',
+	'id' => 'coupons_top',
+	'before_widget' => '<li id="%1$s" class="widget %2$s">',
+	'after_widget' => '</li>',
+	'before_title' => '<h2 class="offscreen">',
+	'after_title' => '</h2>',
+));
+register_sidebar(array(
+	'name'=> 'Coupons bottom',
+	'id' => 'coupons_bottom',
+	'before_widget' => '<li id="%1$s" class="widget %2$s">',
+	'after_widget' => '</li>',
+	'before_title' => '<h3>',
+	'after_title' => '</h3>',
+));
