@@ -75,16 +75,16 @@ function include_coupons_in_categories_and_tags ($query)
 register_sidebar(array(
 	'name'=> 'Coupons top',
 	'id' => 'coupons_top',
-	'before_widget' => '<li id="%1$s" class="widget %2$s">',
-	'after_widget' => '</li>',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget' => '</div>',
 	'before_title' => '<h2 class="offscreen">',
 	'after_title' => '</h2>',
 ));
 register_sidebar(array(
 	'name'=> 'Coupons bottom',
 	'id' => 'coupons_bottom',
-	'before_widget' => '<li id="%1$s" class="widget %2$s">',
-	'after_widget' => '</li>',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget' => '</div>',
 	'before_title' => '<h3>',
 	'after_title' => '</h3>',
 ));
