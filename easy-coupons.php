@@ -21,6 +21,11 @@ License: WTFPL :p
 defined('ABSPATH') or die("Cannot access pages directly.");
 
 /**
+ * Required files
+ */
+require 'widgets/categories.widget.php';
+
+/**
  * Create post type on WP to the coupons
  *
  * @uses Category
@@ -36,6 +41,8 @@ function create_coupons_type ()
 				'singular_name' => 'Coupon'
 			),
 			'public' => true,
+			'show_ui' => true,
+			'capability_type' => 'post',
 			'has_archive' => true,
 			'rewrite' => array('slug' => 'coupon'),
 			'show_in_admin_bar' => true,
@@ -88,3 +95,12 @@ register_sidebar(array(
 	'before_title' => '<h3>',
 	'after_title' => '</h3>',
 ));
+
+/**
+ * Register the widgets
+ */
+add_action('widgets_init', 'ecc_register_widgets');
+function ecc_register_widgets ()
+{
+	register_widget('Categories_Widget');
+}

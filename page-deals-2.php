@@ -1,1 +1,0 @@
-../../themes/twentyten/page-deals-2.php
