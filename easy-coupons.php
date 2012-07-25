@@ -52,7 +52,8 @@ function create_coupons_type ()
 			'rewrite'                  => array('slug' => 'coupon', 'with_front' => false),
 			'show_in_admin_bar'        => true,
 			'taxonomies'               => array('coupons'),
-			'supports'                 => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'sticky')
+			'supports'                 => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'sticky'),
+			'menu_icon'                => plugins_url('assets/img/plugin_menu_ico.png', __FILE__)
 		)
 	);
 
