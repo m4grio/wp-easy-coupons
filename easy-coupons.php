@@ -9,7 +9,7 @@ Plugin Name: Skint Coupons
 Plugin URI: http://creativeworkers.mx/
 Description: This is sparta!
 Author: Mario Alva
-Version: 0.1
+Version: 0.6
 License: WTFPL :p
 */
 
