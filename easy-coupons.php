@@ -118,7 +118,7 @@ function ecc_plugin ()
 	else
 	{
 
-		if (is_page('deals'))
+		if (is_page('supercalifragilisticexpialidocious'))
 		{
 
 			/**
