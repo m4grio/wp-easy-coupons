@@ -1,11 +1,11 @@
 <?php
 /**
  * Package WordPRess
- * @subpackage Easy_Coupons
+ * @subpackage Skint_Coupons
  * @version 0.1
  */
 /*
-Plugin Name: Easy Coupons
+Plugin Name: Skint Coupons
 Plugin URI: http://creativeworkers.mx/
 Description: This is sparta!
 Author: Mario Alva
@@ -25,7 +25,7 @@ defined('ABSPATH') or die("Cannot access pages directly.");
 /**
  * Required files
  */
-require 'widgets/categories.widget.php';
+// require 'widgets/categories.widget.php';
 
 
 /**
@@ -52,7 +52,7 @@ function create_coupons_type ()
 			'rewrite'                  => array('slug' => 'coupon', 'with_front' => false),
 			'show_in_admin_bar'        => true,
 			'taxonomies'               => array('coupons'),
-			'supports'                 => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'sticky'),
+			'supports'                 => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'sticky', 'custom-fields'),
 			'menu_icon'                => plugins_url('assets/img/plugin_menu_ico.png', __FILE__)
 		)
 	);
@@ -139,117 +139,11 @@ function ecc_plugin ()
 			}
 
 
-			wp_enqueue_style('', plugins_url('assets/css/styles.css', __FILE__));
-			wp_enqueue_script('', plugins_url('assets/js/rate.js', __FILE__));
+			wp_enqueue_style('ecc_styles', plugins_url('assets/css/styles.css', __FILE__));
+
+			wp_enqueue_script('ecc_rating', plugins_url('assets/js/rate.js', __FILE__));
+			wp_enqueue_script('ecc_pajinate', plugins_url('assets/js/jquery.pajinate.min.js', __FILE__));
 		}
-
-		?>
-		<script type='text/javascript' src='http://www.skintnation.com/wp-includes/js/jquery/jquery.js?ver=1.7.2'></script>
-
-		<link rel="stylesheet" href="http://www.skintnation.com/wp-content/themes/Avenue/style.css" type="text/css" />
-		<link rel="stylesheet" href="http://www.skintnation.com/wp-content/themes/Avenue/js/colorbox/colorbox.css" type="text/css" />
-		<link rel="stylesheet" href="http://www.skintnation.com/wp-content/themes/Avenue/css/style_slide.css" type="text/css"> <!-- the main structure and main page elements style --> 
-		<link rel="stylesheet" href="http://www.skintnation.com/wp-content/themes/Avenue/css/js_slide.css" type="text/css" media="screen"> <!-- styles for the various jquery plugins -->
-		<link rel='stylesheet' id='usernoise-button-css'  href='http://www.skintnation.com/wp-content/plugins/usernoise/css/button.css?ver=3.4.1' type='text/css' media='all' />
-		<link rel='stylesheet' id='boxes-css'  href='http://www.skintnation.com/wp-content/plugins/wordpress-seo/css/adminbar.css?ver=3.4.1' type='text/css' media='all' />
-		<link rel='stylesheet' id='avhec-widget-css'  href='http://www.skintnation.com/wp-content/plugins/extended-categories-widget/3.3/css/avh-ec.widget.css?ver=3.6.4' type='text/css' media='all' />
-		<style type="text/css" media="screen">
-			html { margin-top: 28px !important; }
-			* html body { margin-top: 28px !important; }
-		</style>
-		<style type="text/css" media="all">
-		/* <![CDATA[ */
-		@import url("http://www.skintnation.com/wp-content/plugins/wp-table-reloaded/css/plugin.css?ver=1.9.3");
-		@import url("http://www.skintnation.com/wp-content/plugins/wp-table-reloaded/css/datatables.css?ver=1.9.3");
-		/* ]]> */
-		</style>
-		<style type='text/css'>
-
-		body { 
-
-		background:#F6F6F6 url('http://www.skintnation.com/wp-content/themes/Avenue/images/patterns/pattern4.png');
-
-		background-repeat:repeat;
-
-		background-attachment:fixed;
-
-		overflow:scroll;
-
-
-
-
-
-		 }
-
-		.arrows { color:#e821c0; }
-
-		.block-arrows, .block-arrows a { color:#e821c0; }
-
-		.meta-arrow { font-size:16px; color:#e821c0; }
-
-		.tweets a, .textwidget a { color:#e821c0; }
-
-		</style>
-		<style type="text/css" media="screen">
-		#vslider_optionscontainer {
-			margin: 0px; ?>;
-			float:none;
-			}
-		#vslider_options { 
-			width: 728px; 
-			height: 90px;
-			overflow: hidden; 
-			position: relative; 
-			}
-			
-
-			#vslider_options a, #vslider_options a img {
-				border: none !important; 
-				text-decoration: none !important; 
-				outline: none !important;
-				} 
-				
-			#vslider_options h4 {
-				color: #FFFFFF !important;
-				margin: 0px !important;padding: 0px !important;
-				font-family: Arial, Helvetica, sans-serif !important;
-				font-size: 16px !important;}
-				
-			#vslider_options .cs-title {
-				background: #ffffff;
-				color: #FFFFFF  !important;
-				font-family: Arial, Helvetica, sans-serif !important;
-				font-size: 12px !important;
-				letter-spacing: normal !important;line-height: normal !important;}
-				
-			#vslider_options .cs-title{ position:absolute;
-			width: 718px; padding: 10px;        }
-			#cs-buttons-vslider_options { display: none; }    #vslider_optionscontainer .cs-buttons {clear:both; font-size: 0px; margin: 0px 0 10px 100px; float: left; }
-			   #cs-button-vslider_options{ z-index:999;outline:none;}
-						#vslider_optionscontainer .cs-buttons { font-size: 0px; padding: 10px; float: left; outline: none !important;}
-				   #vslider_optionscontainer .cs-buttons a { margin-left: 5px; height: 15px; width: 15px; float: left; 
-									background: url('http://www.skintnation.com/wp-content/plugins/vslider/images/default_style.png') no-repeat;background-position:top;
-														text-indent: -1000px;
-														outline: none !important;
-									 }
-					 #vslider_optionscontainer .cs-buttons a:hover  { background: url('http://www.skintnation.com/wp-content/plugins/vslider/images/default_style.png') no-repeat;background-position: bottom;top:15px;outline: none !important;}
-					#vslider_optionscontainer  a.cs-active { background: url('http://www.skintnation.com/wp-content/plugins/vslider/images/default_style.png') no-repeat;background-position:bottom;outline: none !important;}          
-										
-				
-						 #vslider_options  .cs-prev,#vslider_options  .cs-next { outline:none; }
-				   #vslider_options  .cs-prev {margin-left:8px; line-height: 50px;width: 50px;height:50px; background: url('http://www.skintnation.com/wp-content/plugins/vslider/images/nav_style1_arrows-prev.png')no-repeat; text-indent: -999px;}
-			  #vslider_options  .cs-next {margin-right: 5px; line-height: 50px;width: 50px;height:50px; background: url('http://www.skintnation.com/wp-content/plugins/vslider/images/nav_style1_arrows-next.png')no-repeat; text-indent: -999px;}
-					 
-			   #vslider_options,#vslider_options img {
-				border:0px solid #FFFFFF; 
-				border-radius:0px;
-				-moz-border-radius:0px;
-				-webkit-border-radius:0px;
-				}
-		</style>
-		<link rel="stylesheet" media="screen" type="text/css" href="http://www.skintnation.com/wp-content/plugins/email-newsletter/widget/widget.css" />
-
-		<?php
 	}
 }
 
@@ -257,32 +151,32 @@ function ecc_plugin ()
 /**
  * Add the sidebar areas
  */
-register_sidebar(array(
-	'name'                             => 'Coupons top',
-	'id'                               => 'coupons_top',
-	'before_widget'                    => '<div id="%1$s" class="widget %2$s">',
-	'after_widget'                     => '</div>',
-	'before_title'                     => '<h3 class="widget-title">',
-	'after_title'                      => '</h3>',
-));
-register_sidebar(array(
-	'name'                             => 'Coupons bottom',
-	'id'                               => 'coupons_bottom',
-	'before_widget'                    => '<div id="%1$s" class="widget %2$s">',
-	'after_widget'                     => '</div>',
-	'before_title'                     => '<h3 class="widget-title">',
-	'after_title'                      => '</h3>',
-));
+// register_sidebar(array(
+// 	'name'                             => 'Coupons top',
+// 	'id'                               => 'coupons_top',
+// 	'before_widget'                    => '<div id="%1$s" class="widget %2$s">',
+// 	'after_widget'                     => '</div>',
+// 	'before_title'                     => '<h3 class="widget-title">',
+// 	'after_title'                      => '</h3>',
+// ));
+// register_sidebar(array(
+// 	'name'                             => 'Coupons bottom',
+// 	'id'                               => 'coupons_bottom',
+// 	'before_widget'                    => '<div id="%1$s" class="widget %2$s">',
+// 	'after_widget'                     => '</div>',
+// 	'before_title'                     => '<h3 class="widget-title">',
+// 	'after_title'                      => '</h3>',
+// ));
 
 
-/**
- * Register the widgets
- */
-add_action('widgets_init', 'ecc_register_widgets');
-function ecc_register_widgets ()
-{
-	register_widget('Categories_Widget');
-}
+// /**
+//  * Register the widgets
+//  */
+// add_action('widgets_init', 'ecc_register_widgets');
+// function ecc_register_widgets ()
+// {
+// 	register_widget('Categories_Widget');
+// }
 
 
 /**
@@ -293,27 +187,127 @@ function ecc_register_widgets ()
 function the_coupons ($category=false)
 {
 
+	global $wpdb;
 
+	$ignored = array();
+
+	/**
+	 * Pull options!
+	 */
+	$featured_limit = (int) get_option('ecc_featured-coupons_') ? get_option('ecc_featured-coupons_') : 1;
+	$coupons_per_page = (int) get_option('ecc_coupons-per-page_') ? get_option('ecc_coupons-per-page_') : 10;
+
+	/**
+	 * Try to pull featured coupons
+	 * It can belong to any category, so, the query it's the same for any case
+	 */
+	$featured = $wpdb->get_results("
+		
+		SELECT SQL_CALC_FOUND_ROWS
+			$wpdb->posts.*
+
+		FROM $wpdb->posts
+
+			INNER JOIN $wpdb->postmeta ON
+				($wpdb->posts.ID = $wpdb->postmeta.post_id)
+		
+			INNER JOIN $wpdb->postmeta AS mt1 ON
+				($wpdb->posts.ID = mt1.post_id)
+
+		WHERE
+			1=1
+			AND $wpdb->posts.post_type = 'ecc_coupon'
+			AND ($wpdb->posts.post_status = 'publish' OR $wpdb->posts.post_status = 'private')
+			AND (($wpdb->postmeta.meta_key = '_featured_coupon_d' AND CAST($wpdb->postmeta.meta_value AS CHAR) = '1')
+			AND (mt1.meta_key = '_expiration_d' AND '" . time() . "' <= CAST(mt1.meta_value AS SIGNED)))
+
+		GROUP BY $wpdb->posts.ID
+		ORDER BY $wpdb->posts.post_date DESC
+		LIMIT 0, $featured_limit
+
+	", OBJECT);
+
+	// echo '<pre>';
+	// print_r($featured);
+	// die;
+
+	/**
+	 * If we have featured posts :O
+	 */
+	if ( ! empty($featured))
+	{
+		/**
+		 * Push to ignored array to avoid duplicate entries
+		 */
+		foreach ($featured as $_post)
+			$ignored[] = $_post->ID;
+
+
+		/**
+		 * Render it
+		 */
+		?>
+		<div id="featured-coupons-wrapper">
+			<?php include 'views/featured-coupon.php' ?>
+
+			<?php
+
+				/**
+				 * Pull the banner data
+				 */
+				$banner = get_option('ecc_banner');
+				$banner_link = get_option('ecc_banner_link');
+
+			if ($banner): ?>
+
+			<div id="coupons-banner-wrapper">
+				<p>
+					
+					<?php if ($banner_link): ?>
+					<a href="<?php echo $banner_link ?>">
+						<?php echo $banner ?>
+					</a>
+					<?php else: ?>
+						<?php echo $banner ?>
+					<?php endif ?>
+				</p>
+			</div>
+
+			<?php endif ?>
+
+		</div>
+		<?php
+	}
+
+
+	/**
+	 * Now we pull the rest of the coupons
+	 */
+	wp_reset_postdata();
 	$coupons = new WP_Query(array(
-		'post_type' => 'ecc_coupon'
+		'post_type' => 'ecc_coupon',
+		'post__not_in' => $ignored
 	));
 
 	ob_start();
 		include 'views/coupon.php';
 		$content = ob_get_contents();
 	ob_end_clean();
-
 	
 	?>
 	<div id="coupons-wrapper">
-		<?php echo $content ?>
+		<?php print_r($content) ?>
 	</div>
 	<?php
 }
 
 
 /**
- * Column to feedback
+ * Custom columns to the list
+ *
+ * @uses Feedback
+ * @uses Featured
+ * @uses Expiration date
  */
 add_filter('manage_edit-ecc_coupon_columns', 'ecc_edit_columns');
 add_action('manage_ecc_coupon_posts_custom_column', 'ecc_manage_columns', 10, 2);
@@ -329,6 +323,7 @@ function ecc_edit_columns ($columns)
 		 */
 		if ($k == 'date')
 		{
+			$new['featured'] = 'Featured';
 			$new['feedback'] = 'Feedback';
 			$new['expiration'] = 'Expiration Date';
 		}
@@ -344,6 +339,15 @@ function ecc_manage_columns ($column, $post_id)
 
 	switch ($column)
 	{
+
+		case 'featured':
+			if ($featured = get_post_meta($post_id, '_featured_coupon_d', true)):
+			?>
+				<p><img src="<?php echo plugins_url('assets/img/ico_featured_coupon-admin.png', __FILE__) ?>"></p>
+			<?php
+			endif;
+			break;
+
 		case 'feedback':
 
 			$yes = get_post_meta($post_id, "ecc_rating-yes_$post_id", true);
@@ -370,7 +374,7 @@ function ecc_manage_columns ($column, $post_id)
 
 
 /**
- * Add expiration to coupons
+ * Add expiration and featuring to coupons
  */
 add_action('post_submitbox_misc_actions', 'add_expiration_date');
 function add_expiration_date ()
@@ -381,7 +385,7 @@ function add_expiration_date ()
 
 
 		if ($expiration = get_post_meta($post->ID, '_expiration_d', true))
-			$expiry = date('d/m/Y', $expiration);
+			$expiration = date('d/m/Y', $expiration);
 
 		$featured = get_post_meta($post->ID, '_featured_coupon_d', true);
 
@@ -451,7 +455,7 @@ function save_expiration_date ()
 		list($d, $m, $y) = explode('/', $_POST['_expiration_d']);
 		update_post_meta($post->ID, '_expiration_d', mktime(0, 0, 0, $m, $d, $y));
 
-		update_post_meta($post->ID, '_featured_coupon_d', $_POST['_featured_coupon_d'] == 'on' ? 1 : 0);
+		update_post_meta($post->ID, '_featured_coupon_d', $_POST['_featured_coupon_d'] == 'on' ? '1' : '0');
 	}
 }
 
@@ -471,6 +475,8 @@ function ecc_options ()
 	{
 		update_option('ecc_featured-coupons_', esc_attr($_POST['ecc_featured-coupons_']));
 		update_option('ecc_coupons-per-page_', esc_attr($_POST['ecc_coupons-per-page_']));
+		update_option('ecc_banner', $_POST['ecc_banner']);
+		update_option('ecc_banner_link', $_POST['ecc_banner_link']);
 	}
 
 	?>
@@ -503,6 +509,24 @@ function ecc_options ()
 						</td>
 					</tr>
 
+					<tr valign="top">
+						<th scope="row">
+							<label for="ecc_banner">Banner text <br><small>wrap with &lt;strong&gt;<span style="color:#f51464;">for pink text</span>&lt;/strong&gt;</small></label>
+						</th>
+						<td>
+							<input name="ecc_banner" type="text" id="ecc_banner" value="<?php echo esc_attr(get_option('ecc_banner')) ?>" class="regular-text code">
+						</td>
+					</tr>
+
+					<tr valign="top">
+						<th scope="row">
+							<label for="ecc_banner_link">Banner link</label>
+						</th>
+						<td>
+							<input name="ecc_banner_link" type="text" id="ecc_banner_link" value="<?php echo esc_attr(get_option('ecc_banner_link')) ?>" class="regular-text code">
+						</td>
+					</tr>
+
 				</tbody>
 			</table>
 
@@ -514,4 +538,14 @@ function ecc_options ()
 		<div class="clear"></div>
 	</div>
 	<?php
+}
+
+
+/**
+ * Protect feedback custom fields
+ */
+add_filter('is_protected_meta', 'ecc_protect_meta', 10, 2);
+function ecc_protect_meta ($protected, $meta_key)
+{
+	return preg_match('/^ecc_rating/', $meta_key) ? true : $protected;
 }

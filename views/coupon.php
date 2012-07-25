@@ -9,7 +9,7 @@ if ($coupons->have_posts()):  while ($coupons->have_posts()):  $coupons->the_pos
 	$expiration = get_post_meta(get_the_ID(), '_expiration_d', true);
 	$current = time();
 
-	if (time() >= $expiration)
+	if ($expiration && (time() >= $expiration))
 		continue;
 
 

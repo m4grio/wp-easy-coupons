@@ -1,18 +1,8 @@
-<?php isset($coupons) or die('No coupons');
+<?php isset($featured) or die('sadfasf');
 
-if ($coupons->have_posts()):  while ($coupons->have_posts()):  $coupons->the_post(); ?>
-<?php
-	
-	/**
-	 * Date validation
-	 */
-	$expiration = get_post_meta(get_the_ID(), '_expiration_d', true);
-	$current = time();
+global $post;
 
-	if (time() >= $expiration)
-		continue;
-
-?>
+foreach ($featured as $post):  setup_postdata($post) ?>
 <div id="coupon_<?php the_ID() ?>" class="coupon featured">
 
 	<div class="coupon-contents">
@@ -24,22 +14,15 @@ if ($coupons->have_posts()):  while ($coupons->have_posts()):  $coupons->the_pos
 
 		<div class="wrapper-metadata">
 			<h4><?php echo ucfirst(get_the_title()) ?></h4>
-			<p class="time">
-				Added : <span class="added"><?php the_date('j F Y') ?></span>
-				| Expires: <span class="expires"><?php echo date('j F Y', $expiration) ?></span>
-			</p>
+			<?php the_excerpt() ?>
 		</div>
+
+		<div class="clear"></div>
 
 		<div class="actions">
 
 			<div class="get-it">
 				<a href="<?php the_permalink() ?>"><?php the_title() ?></a>
-			</div>
-			
-			<div class="rate-it">
-				<p>Does it work?</p>
-				<a class="yes">Yes</a>
-				<a class="no">No</a>
 			</div>
 
 		</div>
@@ -48,7 +31,7 @@ if ($coupons->have_posts()):  while ($coupons->have_posts()):  $coupons->the_pos
 
 
 	<div class="coupon-footer">
-		<a href="#share_coupon" class="share">Share</a>
+		<div class="register">
+		</div>
 	</div>
-</div>
-<?php endwhile;  endif; ?>
+</div><?php wp_reset_postdata();  endforeach ?>
