@@ -1,0 +1,11 @@
+div.rating {
+
+}
+
+	div.rating p {
+		line-height: 29px;
+	}
+
+		div.rating p span.chart {
+			margin: 0 4px;
+		}

@@ -1,0 +1,146 @@
+div#coupons-wrapper {
+	overflow: hidden;
+}
+
+div.coupon {
+	margin: 30px 0;
+	width: 634px;
+	height: 194px;
+	border: 1px dashed #939393;
+	border-left: 0 none;
+	border-radius: 3px;
+	overflow: hidden;
+	position: relative;
+}
+
+div.coupon.featured {
+	border-color: #d8d8d8;
+}
+
+	div.coupon div.coupon-contents {
+		padding: 16px 0 0 20px;
+		overflow: hidden;
+	}
+
+		div.coupon div.coupon-contents div.wrapper-image {
+			width: 124px;
+			height: 125px;
+			float: left;
+			margin: 0 9px 0 0;
+			border: 4px solid #edf2ee;
+			border-radius: 3px;
+		}
+
+			div.coupon div.coupon-contents div.wrapper-image img {
+
+			}
+
+		div.coupon div.coupon-contents div.wrapper-metadata {
+			float: left;
+			width: 450px;
+			position: relative;
+		}
+
+			div.coupon div.coupon-contents div.wrapper-metadata h4 {
+				text-transform: none;
+				font-family: Arial, sans-serif;
+				font-size: 15px;
+				font-weight: bold;
+				margin-bottom: 0;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			div.coupon div.coupon-contents div.wrapper-metadata p.time {
+				background: url(../img/ico_time.jpg) 0 3px no-repeat;
+				padding: 0 0 0 22px;
+				height: 22px;
+				line-height: 21px;
+				position: absolute;
+				left: 0;
+				top: 47px;
+				color: #5f615f;
+			}
+
+		div.coupon div.coupon-contents div.actions {
+			position: absolute;
+			left: 162px;
+			width: 450px;
+			height: 57px;
+			top: 90px;
+		}
+
+			div.coupon div.actions div.get-it {
+
+			}
+
+				div.coupon div.actions div.get-it a {
+					display: block;
+					background: url(../img/button-view_offer.png) no-repeat 0 0;
+					text-indent: -9999em;
+					height: 41px;
+					width: 247px;
+					position: absolute;
+					top: 7px;
+					left: 0;
+				}
+
+			div.coupon div.actions div.rate-it {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 140px;
+				
+			}
+
+				div.coupon div.actions div.rate-it p {
+					margin: 0;
+					color: #1e8c09;
+					font-family: 'BebasNeueRegular';
+					font-size: 18px;
+					margin-bottom: 6px;
+					padding-left: 17px;
+				}
+
+				div.coupon div.actions div.rate-it a {
+					color: #484848;
+					cursor: pointer;
+					padding: 0 0 0 26px;
+					line-height: 35px;
+					font-size: 14px;
+					height: 33px;
+					display: inline-block;
+				}
+
+				div.coupon div.actions div.rate-it a.yes {
+					background: url(../img/ico_yes.jpg) 0px 0px no-repeat;
+					margin-right: 15px;
+					padding-left: 29px;
+				}
+
+				div.coupon div.actions div.rate-it a.no {
+					background: url(../img/ico_no.jpg) 0 2px no-repeat;
+				}
+
+	div.coupon div.coupon-footer {
+		background-color: #fff7e4;
+		height: 36px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		overflow: hidden;
+	}
+
+		div.coupon div.coupon-footer a {
+			float: left;
+			text-indent: -9999em;
+			display: inline-block;
+			height: 37px;
+		}
+
+		div.coupon div.coupon-footer a.share {
+			background: url(../img/button_share.jpg) no-repeat 0 0;
+			width: 86px;
+		}
