@@ -2,7 +2,7 @@
 /**
  * Package WordPRess
  * @subpackage Skint_Coupons
- * @version 0.1
+ * @version 0.6
  */
 /*
 Plugin Name: Skint Coupons
