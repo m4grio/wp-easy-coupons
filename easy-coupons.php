@@ -333,7 +333,7 @@ function the_coupon_categories ()
 				<a href="<?php echo get_term_link($cat->slug, 'coupons') ?>"><?php echo $cat->name ?></a>
 			</li>
 			
-			<?php endforeach ?>
+			<?php endforeach; ?>
 		</ul>
 	</div>
 	<?php
