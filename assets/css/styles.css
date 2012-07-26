@@ -4,7 +4,7 @@ div#wrapper-content {
 	position: relative !important;
 }
 
-	div#wrapper-conten div#main {
+	div#wrapper-content div#main {
 		position: absolute !important;
 		left: -20px !important;
 	}
