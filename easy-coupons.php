@@ -303,6 +303,44 @@ function the_coupons ($category=false)
 
 
 /**
+ * The sidebar
+ */
+function the_coupon_categories ()
+{
+
+	$cats = get_categories(array(
+		'type'                     => 'post',
+		'child_of'                 => 0,
+		'parent'                   => '',
+		'orderby'                  => 'count',
+		'order'                    => 'ASC',
+		'hide_empty'               => true,
+		'hierarchical'             => 1,
+		'exclude'                  => '',
+		'include'                  => '',
+		'number'                   => -1,
+		'taxonomy'                 => 'coupons',
+		'pad_counts'               => false
+	));
+
+	if ((bool) count($cats)): ?>
+	<div class="widget">
+		<h3 class="widget-title">Popular <span>Categories</span></h3>
+		<ul id="list-coupon_category">
+			<?php foreach ($cats as $cat): ?>
+			
+			<li id="ecc_category_<?php echo $cat->term_taxonomy_id ?>" class="category category-<?php echo $cat->slug ?>">
+				<a href="<?php echo get_term_link($cat->slug, 'coupons') ?>"><?php echo $cat->name ?></a>
+			</li>
+			
+			<?php endforeach ?>
+		</ul>
+	</div>
+	<?php
+}
+
+
+/**
  * Custom columns to the list
  *
  * @uses Feedback
