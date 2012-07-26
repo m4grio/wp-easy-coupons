@@ -1,17 +1,7 @@
 /** -- WRAPPERS FOR AVENUE THEME -- */
-div#wrapper-content {
-	overflow: visible !important;
-	position: relative !important;
+div.post-entry {
+	margin-left: -20px;
 }
-
-	div#wrapper-content div#main {
-		position: absolute !important;
-		left: -20px !important;
-	}
-
-	div#wrapper-content div.post-heading.page h1 {
-		margin-left: 20px !important;
-	}
 
 
 div#coupons-wrapper {
