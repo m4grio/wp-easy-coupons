@@ -336,7 +336,7 @@ function the_coupon_categories ()
 			<?php endforeach; ?>
 		</ul>
 	</div>
-	<?php
+	<?php endif;
 }
 
 
