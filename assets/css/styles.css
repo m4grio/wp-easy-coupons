@@ -1,3 +1,19 @@
+/** -- WRAPPERS FOR AVENUE THEME -- */
+div#wrapper-content {
+	overflow: visible;
+	position: relative;
+}
+
+	div#wrapper-conten div#main {
+		position: absolute;
+		left: -20px;
+	}
+
+	div#wrapper-content div.post-heading.page h1 {
+		margin-left: 20px;
+	}
+
+
 div#coupons-wrapper {
 	overflow: hidden;
 }
