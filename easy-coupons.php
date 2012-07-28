@@ -249,32 +249,6 @@ function the_coupons ($category=false)
 		?>
 		<div id="featured-coupons-wrapper">
 			<?php include 'views/featured-coupon.php' ?>
-
-			<?php
-
-				/**
-				 * Pull the banner data
-				 */
-				$banner = get_option('ecc_banner');
-				$banner_link = get_option('ecc_banner_link');
-
-			if ($banner): ?>
-
-			<div id="coupons-banner-wrapper">
-				<p>
-					
-					<?php if ($banner_link): ?>
-					<a href="<?php echo $banner_link ?>">
-						<?php echo $banner ?>
-					</a>
-					<?php else: ?>
-						<?php echo $banner ?>
-					<?php endif ?>
-				</p>
-			</div>
-
-			<?php endif ?>
-
 		</div>
 		<?php
 	}

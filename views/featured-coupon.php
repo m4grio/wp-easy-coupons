@@ -34,4 +34,10 @@ foreach ($featured as $post):  setup_postdata($post) ?>
 		<div class="register">
 		</div>
 	</div>
-</div><?php wp_reset_postdata();  endforeach ?>
+</div>
+
+<div id="coupons-banner-wrapper">
+	<p>Active <?php the_category() ?> 2012 and discounts</p>
+</div>
+
+<?php wp_reset_postdata();  endforeach ?>
